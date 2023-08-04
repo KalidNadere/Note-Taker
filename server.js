@@ -22,3 +22,40 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+// API routes
+app.get('/notes', (req, res) => {
+  fs.readFile(dbFilePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: 'Error reading data from the database.' });
+    }
+
+    const notes = JSON.parse(data);
+    res.json(notes);
+  });
+});
+
+app.post('/api/notes', (req, res) => {
+  const newNote = {
+    id: uuidv4(),
+    title: req.body.title,
+    text: req.body.text,
+  };
+
+  fs.readFile(dbFilePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: 'Error reading data from database.' });
+    }
+
+    const notes = JSON.parse(data);
+    notes.push(newNote);
+
+    fs.writeFile(dbFilePath, JSON.stringify(notes), (err) => {
+      if (err) {
+        return res.status(500),json({ error: 'Error writing data to the database.' });
+      }
+
+      res.json(newNote);
+    });
+  });
+});
+
