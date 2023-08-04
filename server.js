@@ -11,19 +11,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-const dbFilePath = path.join(__dirname, 'db/db.json');
+// Absolute path for the db.json file
+const dbFilePath = path.resolve(__dirname, 'db/db.json');
 
 // HTML routes
 app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/notes.html'));
+  res.sendFile(path.join(__dirname, 'develop/public/notes.html'));
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname, 'develop/public/index.html'));
 });
 
 // API routes
-app.get('/notes', (req, res) => {
+app.get('/api/notes', (req, res) => {
   fs.readFile(dbFilePath, 'utf8', (err, data) => {
     if (err) {
       return res.status(500).json({ error: 'Error reading data from the database.' });
@@ -43,7 +44,7 @@ app.post('/api/notes', (req, res) => {
 
   fs.readFile(dbFilePath, 'utf8', (err, data) => {
     if (err) {
-      return res.status(500).json({ error: 'Error reading data from database.' });
+      return res.status(500).json({ error: 'Error reading data from the database.' });
     }
 
     const notes = JSON.parse(data);
@@ -51,7 +52,7 @@ app.post('/api/notes', (req, res) => {
 
     fs.writeFile(dbFilePath, JSON.stringify(notes), (err) => {
       if (err) {
-        return res.status(500),json({ error: 'Error writing data to the database.' });
+        return res.status(500), json({ error: 'Error writing data to the database.' });
       }
 
       res.json(newNote);
@@ -68,9 +69,9 @@ app.delete('/api/notes/:id', (req, res) => {
     }
 
     const notes = JSON.parse(data);
-    const updateNotes = notes.filter((note) => note.id !== nodeId);
+    const updatedNotes = notes.filter((note) => note.id !== noteId);
 
-    fs.writeFile(dbFilePath, JSON.stringify(updateNotes), (err) => {
+    fs.writeFile(dbFilePath, JSON.stringify(updatedNotes), (err) => {
       if (err) {
         return res.status(500).json({ error: 'Error writing data to the database.' });
       }
@@ -81,5 +82,5 @@ app.delete('/api/notes/:id', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`server us running on ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
