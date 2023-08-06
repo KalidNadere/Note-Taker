@@ -4,6 +4,7 @@
 
 ## Table of Contents
 - [Description](#description)
+- [Deployed URL](#deployedurl)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -31,12 +32,13 @@ Key features of the Note Taker application typically include:
 - A main content area where users can view and create new notes.
 - Save and New buttons/icons to save new notes and create new notes.
 - Functionality to delete notes from the list.
-![Screenshot 2023-08-06 at 6 04 24 pm](https://github.com/KalidNadere/Note-Taker/assets/131591052/502edebf-5161-466a-9069-9f062db6064b)
-![Screenshot 2023-08-06 at 6 06 19 pm](https://github.com/KalidNadere/Note-Taker/assets/131591052/c30ecee9-040c-4d5b-83a9-8e1b2c4c8b78)
 
 
 ## URL of deployed page
-http://localhost:3001/notes 
+https://deploying-note-taker-heroku-413934cb70f5.herokuapp.com/
+
+![Screenshot 2023-08-06 at 10 46 56 pm](https://github.com/KalidNadere/Note-Taker/assets/131591052/dc532199-c40e-4366-8b7b-d59a21a41a3b)
+![Screenshot 2023-08-06 at 10 45 21 pm](https://github.com/KalidNadere/Note-Taker/assets/131591052/e8e69300-0784-499c-b4fa-6fbe44cfd2ee)
 
 
 ## Installation <a name='installation'></a>
