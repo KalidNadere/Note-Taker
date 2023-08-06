@@ -35,7 +35,7 @@ Key features of the Note Taker application typically include:
 ![Screenshot 2023-08-06 at 6 06 19 pm](https://github.com/KalidNadere/Note-Taker/assets/131591052/c30ecee9-040c-4d5b-83a9-8e1b2c4c8b78)
 
 ## URL of deployed page
-http://localhost:3001/notes
+http://
 
 ## Installation <a name='installation'></a>
 - Clone the repo: 
