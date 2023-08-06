@@ -4,7 +4,7 @@
 
 ## Table of Contents
 - [Description](#description)
-- [Deployed URL](#deployedurl)
+- [Deployed URL](#deployed-url)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
