@@ -26,6 +26,7 @@ app.get('/api/notes', (req, res) => {
   });
 });
 
+// Route for handling HTTP post requests to create new note
 app.post('/api/notes', (req, res) => {
   const newNote = {
     id: uuidv4(),
@@ -33,6 +34,7 @@ app.post('/api/notes', (req, res) => {
     text: req.body.text,
   };
 
+  // Route for handling data from database file
   fs.readFile(dbFilePath, 'utf8', (err, data) => {
     if (err) {
       return res.status(500).json({ error: 'Error reading data from the database.' });
@@ -51,6 +53,7 @@ app.post('/api/notes', (req, res) => {
   });
 });
 
+// Route for handling delete requests
 app.delete('/api/notes/:id', (req, res) => {
   const noteId = req.params.id;
 
